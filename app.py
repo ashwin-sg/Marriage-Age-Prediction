@@ -1,5 +1,5 @@
 import flask
-from flask import request
+from flask import request, render_template
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
@@ -7,9 +7,9 @@ from flask_cors import CORS
 CORS(app)
 
 # main index page route
-# @app.route('/')
-# def home():
-#     return '<h1>API is working.. </h1>'
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 
 @app.route('/predict',methods=['GET'])
@@ -23,7 +23,8 @@ def predict():
                             int(request.args['country']),
                             int(request.args['height_cms']),
                            ]])
-    return str(round(predicted_age_of_marriage[0],2))
+    result = str(round(predicted_age_of_marriage[0], 2))
+    return render_template('index.html', exist_response=result)
 
 
 if __name__ == "__main__":

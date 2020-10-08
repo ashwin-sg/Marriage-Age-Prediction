@@ -12,7 +12,7 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/predict',methods=['GET'])
+@app.route('/predict', methods=['GET'])
 def predict():
     import joblib
     model = joblib.load('marriage_age_predict_model.ml')
@@ -23,8 +23,9 @@ def predict():
                             int(request.args['country']),
                             int(request.args['height_cms']),
                            ]])
-    result = str(round(predicted_age_of_marriage[0], 2))
-    return render_template('index.html', exist_response=result)
+    return str(round(predicted_age_of_marriage[0], 2))
+
+
 
 
 if __name__ == "__main__":

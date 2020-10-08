@@ -12,7 +12,7 @@ CORS(app)
 #     return '<h1>API is working.. </h1>'
 
 
-@app.route('/',methods=['GET'])
+@app.route('/predict',methods=['GET'])
 def predict():
     import joblib
     model = joblib.load('marriage_age_predict_model.ml')

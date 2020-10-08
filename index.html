@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Age of Marriage Prediction</title>
+	<title>Marriage Year Prediction</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -11,8 +11,8 @@
 </style>
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" action="/action_page.php" >
-				<span class="contact100-form-title" style="font-size:32px">Artificial Intelligence Marriage Year Prediction</span>
+			<form class="contact100-form validate-form" action="{{ url_for('predict') }}" method="GET" >
+				<span class="contact100-form-title" style="font-size:32px">Marriage Year Prediction</span>
 				<span class="contact100-form-title" id="output" style="color: #ff0000;" >&nbsp;</span>
 				
 				<div class="wrap-input100 " >
@@ -175,11 +175,13 @@
 			</form>
 		</div>
 	</div>
+	
+
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		$('#submit').click(function(event){    
 		  event.preventDefault();     
-		  var exist_response = $.ajax({type:"GET", action= "{{ url_for('predict') }}",data:"gender="+$('#gender').val()+"&height_cms="+$('#height_cms').val()+"&caste="+$('#caste').val()+"&religion="+$('#religion').val()+"&mother_tongue="+$('#mother_tongue').val()+"&country="+$('#country').val(),async: false}).responseText;
+		  var exist_response = $.ajax({type:"GET",url:"/predict",data:"gender="+$('#gender').val()+"&height_cms="+$('#height_cms').val()+"&caste="+$('#caste').val()+"&religion="+$('#religion').val()+"&mother_tongue="+$('#mother_tongue').val()+"&country="+$('#country').val(),async: false}).responseText;
 		  $('#output').text("Your Predicted Year of Marriage : "+ String(parseInt(exist_response.split(".")[0]) + parseInt($('#yob').val())));
 		});
 	</script>

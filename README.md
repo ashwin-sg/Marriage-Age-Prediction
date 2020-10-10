@@ -7,6 +7,3 @@ I used Random Forest Regressor after testing it multiple other linera algorithms
 You can have look by clicking on the link below,
 https://marriageageprediction.herokuapp.com/
 
-Credits:
-Datamites
-
